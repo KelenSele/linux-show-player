@@ -3,7 +3,7 @@ requires = ["poetry-core>=1.1.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "linux-show-player"
+name = "linux-show-player-vitez-laszlo-edit"
 version = "0.6.5"
 description = "Cue player for stage productions"
 authors = ["Francesco Ceruti <ceppofrancy@gmail.com>"]
@@ -57,7 +57,7 @@ pygobject-stubs = "^2.11.0"
 ruff = "^0.6.9"
 
 [tool.poetry.scripts]
-linux-show-player = "lisp.main:main"
+linux-show-player-vitez-laszlo-edit = "lisp.main:main"
 
 [tool.ruff]
 line-length = 80

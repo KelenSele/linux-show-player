@@ -94,7 +94,9 @@ class ListLayoutSettings(QScrollArea, SettingsPage):
         self.goDelayLabel = QLabel(self.behaviorsGroup)
         self.behaviorsGroup.layout().addWidget(self.goDelayLabel, 4, 0)
         self.goDelaySpin = QSpinBox(self.behaviorsGroup)
+        self.goDelaySpin.setMinimum(0)
         self.goDelaySpin.setMaximum(10000)
+        self.goDelaySpin.setSingleStep(100)
         self.behaviorsGroup.layout().addWidget(self.goDelaySpin, 4, 1)
 
         self.useFadeGroup = QGroupBox(self.contentWidget)

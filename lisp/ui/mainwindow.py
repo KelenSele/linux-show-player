@@ -59,7 +59,7 @@ class MainWindow(QMainWindow, metaclass=QSingleton):
     save_session = pyqtSignal(str)
     open_session = pyqtSignal(str)
 
-    def __init__(self, app, title="Linux Show Player", **kwargs):
+    def __init__(self, app, title="Linux Show Player - Vitez Laszlo Edit", **kwargs):
         """:type app: lisp.application.Application"""
         super().__init__(**kwargs)
         self.setMinimumSize(500, 400)

@@ -107,7 +107,7 @@ def main():
 
     # Create the QApplication
     qt_app = QApplication(sys.argv)
-    qt_app.setApplicationName("Linux Show Player")
+    qt_app.setApplicationName("Linux Show Player - Vitez Laszlo Edit")
     qt_app.setQuitOnLastWindowClosed(True)
 
     # Get/Set the locale
