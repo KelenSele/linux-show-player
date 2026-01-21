@@ -24,6 +24,7 @@ from PyQt5.QtWidgets import (
     QGridLayout,
     QLabel,
     QHBoxLayout,
+    QSpinBox,
 )
 
 from lisp.layout import get_layouts
@@ -97,6 +98,22 @@ class AppGeneral(SettingsPage):
         self.localeCombo = LocaleComboBox(self.localeGroup)
         self.localeGroup.layout().addWidget(self.localeCombo)
 
+        # GO Settings
+        self.goGroup = QGroupBox(self)
+        self.goGroup.setLayout(QGridLayout())
+        self.layout().addWidget(self.goGroup)
+
+        self.goDelayLabel = QLabel(self.goGroup)
+        self.goGroup.layout().addWidget(self.goDelayLabel, 0, 0)
+        self.goDelaySpin = QSpinBox(self.goGroup)
+        self.goDelaySpin.setMinimum(0)
+        self.goDelaySpin.setMaximum(10000)
+        self.goDelaySpin.setSingleStep(100)
+        self.goGroup.layout().addWidget(self.goDelaySpin, 0, 1)
+
+        self.goGroup.layout().setColumnStretch(0, 1)
+        self.goGroup.layout().setColumnStretch(1, 1)
+
         self.retranslateUi()
 
     def retranslateUi(self):
@@ -122,6 +139,13 @@ class AppGeneral(SettingsPage):
         )
         self.localeLabel.setText(translate("AppGeneralSettings", "Language:"))
 
+        self.goGroup.setTitle(
+            translate("AppGeneralSettings", "GO Settings")
+        )
+        self.goDelayLabel.setText(
+            translate("AppGeneralSettings", "GO minimum interval (ms):")
+        )
+
     def getSettings(self):
         settings = {
             "theme": {
@@ -130,6 +154,7 @@ class AppGeneral(SettingsPage):
             },
             "locale": self.localeCombo.currentLocale(),
             "layout": {},
+            "goDelay": self.goDelaySpin.value(),
         }
 
         if self.startupDialogCheck.isChecked():
@@ -151,3 +176,4 @@ class AppGeneral(SettingsPage):
         self.themeCombo.setCurrentText(settings["theme"]["theme"])
         self.iconsCombo.setCurrentText(settings["theme"]["icons"])
         self.localeCombo.setCurrentLocale(settings["locale"])
+        self.goDelaySpin.setValue(settings.get("goDelay", 2000))

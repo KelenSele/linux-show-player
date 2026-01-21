@@ -420,7 +420,7 @@ class ListLayout(CueLayout):
             action = CueAction(ListLayout.Config.get("goAction"))
             self.go(action=action)
 
-            self._go_timer.setInterval(ListLayout.Config.get("goDelay"))
+            self._go_timer.setInterval(self.app.conf.get("goDelay", 2000))
             self._go_timer.start()
 
     def __cue_added(self, cue):

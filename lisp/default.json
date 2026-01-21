@@ -21,22 +21,75 @@
     "logging": {
         "limit": 10000,
         "backgrounds": {
-            "DEBUG": [230, 230, 230, 200],
-            "INFO": [80, 255, 65, 200],
-            "WARNING": [255, 200, 0, 200],
-            "ERROR": [255, 65, 0, 200],
-            "CRITICAL": [255, 0, 0, 200]
+            "DEBUG": [
+                230,
+                230,
+                230,
+                200
+            ],
+            "INFO": [
+                80,
+                255,
+                65,
+                200
+            ],
+            "WARNING": [
+                255,
+                200,
+                0,
+                200
+            ],
+            "ERROR": [
+                255,
+                65,
+                0,
+                200
+            ],
+            "CRITICAL": [
+                255,
+                0,
+                0,
+                200
+            ]
         },
         "foregrounds": {
-            "DEBUG": [0, 0, 0],
-            "INFO": [0, 0, 0],
-            "WARNING": [0, 0, 0],
-            "ERROR": [255, 255, 255],
-            "CRITICAL": [255, 255, 255]
+            "DEBUG": [
+                0,
+                0,
+                0
+            ],
+            "INFO": [
+                0,
+                0,
+                0
+            ],
+            "WARNING": [
+                0,
+                0,
+                0
+            ],
+            "ERROR": [
+                255,
+                255,
+                255
+            ],
+            "CRITICAL": [
+                255,
+                255,
+                255
+            ]
         },
         "viewer": {
-            "visibleLevels": ["WARNING", "ERROR", "CRITICAL"],
-            "visibleColumns": ["asctime", "name", "message"]
+            "visibleLevels": [
+                "WARNING",
+                "ERROR",
+                "CRITICAL"
+            ],
+            "visibleColumns": [
+                "asctime",
+                "name",
+                "message"
+            ]
         }
     },
     "layout": {
@@ -48,5 +101,6 @@
     },
     "actions": {
         "maxStackSize": 0
-    }
+    },
+    "goDelay": 2000
 }

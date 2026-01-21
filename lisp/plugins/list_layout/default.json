@@ -13,7 +13,6 @@
     "goKey": "Space",
     "goKeyDisabledWhilePlaying": false,
     "goAction": "Default",
-    "goDelay": 2000,
     "stopCueFade": true,
     "pauseCueFade": true,
     "resumeCueFade": true,
