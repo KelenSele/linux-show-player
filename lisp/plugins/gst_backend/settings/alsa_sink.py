@@ -22,7 +22,16 @@ from PyQt5.QtWidgets import (
     QLabel,
     QVBoxLayout,
 )
-from pyalsa import alsacard
+
+import sys
+
+try:
+    if sys.platform == 'linux':
+        from pyalsa import alsacard
+    else:
+        alsacard = None
+except ImportError:
+    alsacard = None
 
 from lisp.plugins.gst_backend import GstBackend
 from lisp.plugins.gst_backend.elements.alsa_sink import AlsaSink
@@ -90,6 +99,9 @@ class AlsaSinkSettings(SettingsPage):
 
     def discover_output_pcm_devices(self):
         self.devices = {}
+
+        if alsacard is None:
+            return
 
         # Get a list of the pcm devices "hints", the result is a combination of
         # "snd_device_name_hint()" and "snd_device_name_get_hint()"

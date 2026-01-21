@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Linux Show Player.  If not, see <http://www.gnu.org/licenses/>.
 
+import sys
+import logging
 from PyQt5.QtCore import QT_TRANSLATE_NOOP
 
 from lisp.backend.media_element import ElementType, MediaType
@@ -22,6 +24,8 @@ from lisp.plugins.gst_backend import GstBackend
 from lisp.plugins.gst_backend.gi_repository import Gst
 from lisp.plugins.gst_backend.gst_element import GstMediaElement
 from lisp.plugins.gst_backend.gst_properties import GstProperty
+
+logger = logging.getLogger(__name__)
 
 
 class AlsaSink(GstMediaElement):
@@ -35,8 +39,17 @@ class AlsaSink(GstMediaElement):
     def __init__(self, pipeline):
         super().__init__(pipeline)
 
+        if sys.platform != 'linux':
+            logger.warning("AlsaSink is only supported on Linux")
+            return
+
         self.audio_resample = Gst.ElementFactory.make("audioresample", None)
         self.alsa_sink = Gst.ElementFactory.make("alsasink", "sink")
+
+        if not self.alsa_sink:
+            logger.warning("GStreamer 'alsasink' element not found")
+            return
+
         self.device = GstBackend.Config.get("alsa_device", self.FALLBACK_DEVICE)
 
         self.pipeline.add(self.audio_resample)
